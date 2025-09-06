@@ -1,0 +1,130 @@
+body {
+    /* overflow: hidden; */
+    background: url(/static/5594016.jpg);
+    background-size: cover;
+    /* background- */
+}
+
+header {
+    margin-bottom: 70px;
+}
+
+header h1 {
+    margin-left: 30px;
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+section {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: fit-content;
+    width: 100%;
+}
+
+div.main {
+    display: block;
+    height: 60%;
+    width: 100%;
+}
+
+.main .img-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+}
+
+.main .bro {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 53px;
+    margin-top: 50px;
+}
+
+
+
+
+form {
+    height: 100%;
+    width: 300px;
+    /* background: blue; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+}
+
+/* img {
+    height: 20px;
+    width: 20px;
+} */
+
+.main .imgbox {
+    height: 300px;
+    width: 300px;
+    border-radius: 20px 20px 20px 20px;
+    background: transparent;
+    border: 2px solid white;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    box-shadow: 0px 0px 3px 1px rgb(231, 231, 231);
+}
+
+.main .audbox {
+    height: 53px;
+    width: 400px;
+    border-radius: 30px;
+    background: transparent;
+    border: 2px solid white;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    box-shadow: 0px 0px 3px 1px rgb(231, 231, 231);
+    margin-right: 20px;
+}
+
+audio {
+    width: 400px;
+}
+
+.main .gen {
+    height: 53px;
+    width: 100px;
+    border-radius: 30px;
+    background: white;
+    border: 2px solid white;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    box-shadow: 0px 0px 3px 1px rgb(231, 231, 231);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    color: black;
+    transition: 0.5s;
+}
+.main .gen:hover {
+    color: white;
+    background: black;
+    border: 2px solid black;
+}
+.main .gen p {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.img-btn {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}

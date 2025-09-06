@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulsar</title>
+    <link rel="stylesheet" href="/static/CSS/main.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymus"></script>
+</head>
+<body>
+    <header>
+        <h1>pulsar</h1>
+    </header>
+    <section>
+        <div class="main">
+            <div class="img-container">
+                <div class="imgbox">
+                    <form action="{{ url_for('upload') }}" method="post" id="img-form" enctype="multipart/form-data">
+                        <input type="file" name="file" id="file" class="file" itemtype="">
+                    
+                        <div id="img-btn" class="img-btn" for="file" onclick="imageclick()"><img src="/static/images/gal.png" alt="img" class="my-img" id="my-img" width="300px" height="300px" style="border-radius: 20px;"></div>
+                        <button type="submit" id="submit" style="display: none;">submit</button>
+                    </form>
+                </div>
+            </div>
+            <!-- <div class="button-container">
+                <form action="{{ url_for('upload') }}" method="post" id="img-form" enctype="multipart/form-data">
+                    <input type="file" name="file" id="file" class="file" itemtype="">
+                
+                    <div id="img-btn" class="img-btn" for="file"><img src="/static/images/image.png" alt="img" onclick="imageclick()"></div>
+    
+                </form>
+            </div> -->
+            <div class="bro">
+                <div class="audbox">
+                    <audio controls class="audio" id="audio-src">
+                        <source src="" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="gen" id="gen-btn">
+                    <p>Generate</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <script>
+        let img_btn = document.getElementById('img-btn')
+        let form = document.getElementById('img-form')
+        let submit_btn = document.getElementById("submit")
+        let img = document.getElementById("file")
+        var file 
+        let audio = document.getElementById('audio-src')
+        
+
+        function imageclick() {
+            let f = document.getElementById('file')
+            f.click()
+        }
+
+        function readURL(input) {
+            console.log('nothing is happening')
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                console.log('nothing is happening')
+                
+                // newImage('my-img');
+                // let img = document.getElementById('my-img')
+                // img.width = 340
+                // img.width = 340
+                // console.log(img.width)
+
+                reader.onload = function (e) {
+                    $('#my-img').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+
+                
+            }
+        }
+
+        try {
+            $("#file").change(function(e){
+                readURL(this);                
+            });
+        } catch { 
+        }
+
+
+        // function submit () {
+        //     // form.submit()
+        //     img.doubleclick()
+        // }
+
+        $('#gen-btn').on('click', function(e) {
+            console.log('button clicked')
+            console.log(file)
+            var formData = new FormData();
+            formData.append('file', file);
+            if (file != undefined) {
+                $.ajax({
+                type:'POST',
+                url:'/upload',
+                data: formData,
+                contentType: false, 
+                processData: false,
+                success:function(data)
+                {
+                    
+                    // input.value = ''
+                    // parent.removeChild(loader)
+                    // docResponse(data)
+                    
+                    audio.src = 'static/generated_audio.wav?' + Date.now()
+                    audio.load()
+                    console.log("success")
+                    
+                    
+                },
+                error:function()
+                {
+                    // input.value = ''
+                    // parent.removeChild(loader)
+                    // docResponse("Sorry...seems like I ran into an image error :(")
+                    console.log("error")
+                },
+
+                })
+            }
+
+        })
+
+
+        try {
+            
+            $(document).on('change','#file',function(e)
+                            {
+                console.log('form submitted')
+                e.preventDefault();
+                file = e.target.files[0];
+                // var formData = new FormData();
+                // formData.append('file', file);
+                // if (file != undefined) {
+                //     $.ajax({
+                //     type:'POST',
+                //     url:'/upload',
+                //     data: formData,
+                //     contentType: false, 
+                //     processData: false,
+                //     success:function(data)
+                //     {
+                        
+                //         // input.value = ''
+                //         // parent.removeChild(loader)
+                //         // docResponse(data)
+                //         console.log("success")
+                        
+                        
+                //     },
+                //     error:function()
+                //     {
+                //         // input.value = ''
+                //         // parent.removeChild(loader)
+                //         // docResponse("Sorry...seems like I ran into an image error :(")
+                //         console.log("error")
+                //     },
+
+                //     })
+                // } 
+            });
+        } catch {
+            console.log("Network error :(")
+        }
+        
+    </script>
+</body>
+</html>
